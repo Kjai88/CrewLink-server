@@ -2,7 +2,7 @@
 FROM node:14
 
 # Make a directory for the app, give node user permissions
-RUN mkdir /app && chown node:node /app
+RUN mkdir /app && chown -R node:node /app
 
 # Change to the /app directory *and* make it the default execution directory
 WORKDIR /app
@@ -11,7 +11,7 @@ WORKDIR /app
 USER node
 
 # Copy the repo contents from the build context into the image
-COPY ./ /app/
+COPY --chown=node:node ./ /app/
 
 # Install NPM packages
 RUN yarn install

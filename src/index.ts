@@ -61,7 +61,7 @@ app.get('/health', (req, res) => {
 
 io.on('connection', (socket: socketIO.Socket) => {
 	connectionCount++;
-	logger.info("Total connected: %d", connectionCount);
+	logger.info("Someone Connected! Total connected: %d", connectionCount);
 	let code: string | null = null;
 
 	socket.on('join', (c: string, id: number) => {
